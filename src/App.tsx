@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import ContactPage from "./routes/contact";
-import AboutPage from "./routes/contact";
+import AboutPage from "./routes/about";
 
 
 import { PublicLayout } from "@/layouts/public-layout";
