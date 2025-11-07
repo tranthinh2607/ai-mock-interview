@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import ContactPage from "./routes/contact";
 import AboutPage from "./routes/about";
+import ServicesPage from "./routes/services";
 
 
 import { PublicLayout } from "@/layouts/public-layout";
@@ -29,7 +30,9 @@ const App = () => {
           {/* Contact page */}
           <Route path="/contact" element={<ContactPage />} /> 
           {/* About page */}
-          <Route path="/about" element={<AboutPage />} /> 
+          <Route path="/about" element={<AboutPage />} />
+          {/* Services page */}
+          <Route path="/services" element={<ServicesPage />} />
         </Route>
 
         {/* authentication layout */}
