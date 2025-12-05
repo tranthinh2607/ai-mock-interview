@@ -133,9 +133,21 @@ export const RecordAnswer = ({
       return parsedResult;
     } catch (error) {
       console.log(error);
-      toast("Error", {
-        description: "An error occurred while generating feedback.",
-      });
+      if (error instanceof Error) {
+        if (error.name === "RateLimitError") {
+          toast.error("Gemini limit reached", {
+            description: "Bạn đã vượt giới hạn, thử lại sau ít phút nhé.",
+          });
+        } else if (error.name === "ClientThrottleError") {
+          toast.warning("Chậm lại chút nhé", {
+            description: "Bạn thao tác quá nhanh, đợi vài giây rồi thử lại.",
+          });
+        } else {
+          toast("Error", {
+            description: "An error occurred while generating feedback.",
+          });
+        }
+      }
       return { ratings: 0, feedback: "Unable to generate feedback" };
     } finally {
       setIsAiGenerating(false);
